@@ -8,6 +8,6 @@
 #include<stdio.h>
 int main(int argc, char *argv[])
 {
-    printf("Hello World!\n");
+    printf("Test Git!\n");
     return 0;
 }
