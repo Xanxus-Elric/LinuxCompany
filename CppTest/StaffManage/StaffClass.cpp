@@ -36,3 +36,22 @@ void Staff::ShowStaffInfo(void)
     cout << "\t" << endl;
 }
 
+
+AdminStaff::AdminStaff()
+{
+    cout << "Please initialize the Entry Password:" << endl;
+    cin >> this->AdminPassword;
+
+    this->LoginStatus = false;
+}
+
+AdminStaff::~AdminStaff()
+{
+}
+
+void AdminStaff::ResetPassword(void)
+{
+    cout << "Please input the Reset Password:" << endl;
+    cin >> AdminPassword;
+}
+

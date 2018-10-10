@@ -24,12 +24,21 @@ extern "C"{
         public:
             Staff();
             ~Staff();
-            void ShowStaffInfo(void);
-            
+            void ShowStaffInfo(void); 
     };
 
+    //create a new class AdminStaff by inheriting the class Staff
+    class AdminStaff:public Staff
+    {
+        private:
+            char AdminPassword[20];
+            bool LoginStatus;
 
-
+        public:
+            AdminStaff();
+            ~AdminStaff();
+            void ResetPassword(void);
+    };
 
 #ifdef _cplusplus
 }

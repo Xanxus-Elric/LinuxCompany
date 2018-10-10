@@ -35,6 +35,14 @@ int main()
     {
         StaffArray[i].ShowStaffInfo();
     }
+    
+    //Create a Administrator
+    AdminStaff *Boss = new AdminStaff;
+
+    Boss->ResetPassword();
+
+    delete Boss;
+
 }
 
 
