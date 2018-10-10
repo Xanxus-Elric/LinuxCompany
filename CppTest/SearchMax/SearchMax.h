@@ -17,15 +17,14 @@ class Student
         int     Num;            //the array number of the class Student array
         char    Name[20];
         int     Score;
+        static int NumCount;
 
     public:
-        Student();                      //Initialize the information of the Student Interface
+        Student();                 //Initialize the information of the Student Interface
         ~Student();                     //do nothing
-        SearchMaxScore();               //bubble sort to search the numer of the student who get the Max score
-        void ShowTheStudentInfo();      //Put the information of the student on the screen
-}
-
-
+        void SearchMaxScore(int &MaxScore, int &MaxNum);       //bubble sort to search the numer of the student who get the Max score
+        void ShowTheStudentInfo(void);  //Put the information of the student on the screen
+};
 
 #ifdef _cplusplus
 }
