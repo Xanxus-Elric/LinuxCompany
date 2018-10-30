@@ -1,0 +1,64 @@
+/*************************************************************************
+	> File Name: Tank.h
+	> Author: 
+	> Mail: wangrq@farsight.com.cn
+	> Created Time: Tue 30 Oct 2018 08:54:14 AM CST
+ ************************************************************************/
+
+#ifndef _TANK_H
+#define _TANK_H
+
+#ifdef _cplusplus 
+extern "C" {
+#endif 
+
+#include <cstdio>
+
+//package the macro defination of the cursor's operation
+#define SET_CUR_POST(x, y) prinf("\033[%d;%dH", (x), (y)) 
+
+//the range of the frame
+#define COORD_MIN_X 0
+#define COORD_MIN_Y 0
+#define COORD_MAX_X 100
+#define COORD_MAX_Y 100
+
+//the direction flag of the Tank
+#define UP_DIR      0
+#define DOWN_DIR    1
+#define LEFT_DIR    2
+#define RIGHT_DIR   3
+
+//the keycode of the up, down, left, right
+#define UP      0x26
+#define DOWN    0x28
+#define LEFT    0x25
+#define RIGHT   0x27
+
+int TankDrawFlag[4][9] = {
+    {0, 1, 0, 1, 1, 1, 1, 0, 1}, //THE TANK OF UP Direction
+    {1, 0, 1, 1, 1, 1, 0, 1, 0}, //THE TANK OF DOWN Direction
+    {0, 1, 1, 1, 1, 0, 0, 1, 1}, //THE TANK OF LEFT Direction
+    {1, 1, 0, 0, 1, 1, 1, 1, 0}  //THE TANK OF RIGHT Direction
+};
+
+class Tank
+{
+    private:
+        int Direction;//according this parameter, draw the Tank(range from 0 to 4)
+        int TankCoord[2];//the first parameter is the X position, and the second parameter is the Y position
+        int Speed;
+        //int FirePower;
+
+    public:
+        Tank(int Direction, int TankCoordX, int TankCoordY, int Speed /*, int FirePower*/);//the constructor function, initialize the Tank
+        void TankMove(int DirectKey);
+        void DrawTank();
+        //void TankFire();
+}
+
+#ifdef _cplusplus
+} 
+#endif
+
+#endif
