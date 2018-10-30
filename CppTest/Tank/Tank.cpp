@@ -11,11 +11,11 @@
 
 using namespace std;
 
-int TankDrawFlag[4][9] = {
-    {0, 1, 0, 1, 1, 1, 1, 0, 1}, //UP
-    {1, 0, 1, 1, 1, 1, 0, 1, 0}, //DOWN
-    {0, 1, 1, 1, 1, 0, 0, 1, 1}, //LEFT
-    {1, 1, 0, 0, 1, 1, 1, 1, 0}  //RIGHT
+const char* TankDrawFlag[4][3] = {
+    {" | ", "***", "* *"}, //UP
+    {"* *", "***", " | "}, //DOWN
+    {" **", "-- ", " **"}, //LEFT
+    {"** ", " --", "** "}  //RIGHT
 };
 
 Tank::Tank(int Direction, int CoordX, int CoordY, int TankSpeed/*, int FirePower*/)
