@@ -27,6 +27,7 @@ extern "C" {
             Tank(int Direction, int CoordX, int CoordY, int TankSpeed);
             void TankMove(int DirectKey);
             void DrawTank();
+            void EraseTank();
     };
 
 //THE FLAG OF TANK'S DIRECTION

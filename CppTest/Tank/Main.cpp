@@ -16,10 +16,10 @@ using namespace std;
 
 enum SpeedLevel{ONE_SPEED = 1, SECOND_SPEED = 2, THIRD_SPEED = 3};
 
-enum SpeedLevel Speed = ONE_SPEED;
+enum SpeedLevel Speed = THIRD_SPEED;
 
 //declare the mutex here
-pthread_mutex_t mutex;
+//pthread_mutex_t mutex;
 
 //define the speed later
 Tank Player(UP_DIR, 30, 30, Speed);
@@ -52,16 +52,16 @@ void FlushScreen(void)
     cout << flush;
 
     //draw the tank
-    while(1)
-    {
+    //while(1)
+    //{
 
-        pthread_mutex_lock(&mutex);
+      //  pthread_mutex_lock(&mutex);
         
         //according the data of the tank instance to draw
-        Player.DrawTank();
+        //Player.DrawTank();
 
-        pthread_mutex_unlock(&mutex);
-    }
+        //pthread_mutex_unlock(&mutex);
+    //}
 }
 
 
@@ -72,25 +72,19 @@ int getch(void)
     int ch;
 
     if (tcgetattr(fd, &tm) < 0)
-    {
         return -1;
-    }
 
     tm_old = tm;
 
     cfmakeraw(&tm);
 
     if (tcsetattr(fd, TCSANOW, &tm) < 0)
-    {
         return -1;
-    }
 
     ch = getchar();
 
     if (tcsetattr(fd, TCSANOW, &tm_old) < 0)
-    {
         return -1;
-    }
 
     return ch;
 }
@@ -101,40 +95,39 @@ void* UpdateTankData(void* arg)
     while(1)
     {
         ArrowInput = getch();
-        
-        pthread_mutex_lock(&mutex);
-            
+   
         Player.TankMove(ArrowInput);
-
-        pthread_mutex_unlock(&mutex);
     }
 }
 
 int main()
 {
-    pthread_t UpdateData;
+    //pthread_t UpdateData;
 
-    pthread_mutex_init(&mutex, NULL);
+    //pthread_mutex_init(&mutex, NULL);
 
     system("clear");
 
     //hide the cursor
     cout << "\033[?25l" << endl;
 
+    FlushScreen();
+    Player.DrawTank();
+    UpdateTankData(NULL);
 
     //create a pthread to refresh the screen
-    if (pthread_create(&UpdateData, NULL, UpdateTankData, NULL) != 0)
-    {
-        cout << "pthread_create() error";
-        return -1;
-    }
+    //if (pthread_create(&UpdateData, NULL, UpdateTankData, NULL) != 0)
+    //{
+        //cout << "pthread_create() error";
+        //return -1;
+    //}
 
-    FlushScreen();
+    //FlushScreen();
 
     //get the user's input to update the data of user's Tank
 
-    pthread_join(UpdateData, NULL);
-    pthread_mutex_destroy(&mutex);
+    //pthread_join(UpdateData, NULL);
+    //pthread_mutex_destroy(&mutex);
     
     return 0; 
 }
